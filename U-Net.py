@@ -8,13 +8,7 @@ from dataLoader import getData
 
 def loss(y_true, y_pred):
     y_pred = tf.expand_dims(y_pred, axis=-1)
-    loss0 = bce(y_true, y_pred[0])
-    loss1 = bce(y_true, y_pred[1])
-    loss2 = bce(y_true, y_pred[2])
-    loss3 = bce(y_true, y_pred[3])
-    loss4 = bce(y_true, y_pred[4])
-    loss5 = bce(y_true, y_pred[5])
-    loss6 = bce(y_true, y_pred[6])
+    loss0, loss1, loss2, loss3, loss4, loss5, loss6 = bce(y_true, y_pred[0]), bce(y_true, y_pred[1]), bce(y_true, y_pred[2]), bce(y_true, y_pred[3]), bce(y_true, y_pred[4]), bce(y_true, y_pred[5]), bce(y_true, y_pred[6])
     return loss0 + loss1 + loss2 + loss3 + loss4 + loss5 + loss6
 
 def REBNCONV(x, out_ch=3, dirate=1):
@@ -31,87 +25,57 @@ def _upsample_like(src, tar):
     return src
 
 def RSU7(x, mid_ch=12, out_ch=3):
-    
     x0 = REBNCONV(x, out_ch, 1)
-    
     x1 = REBNCONV(x0, mid_ch, 1)
     x = MaxPool2D(2, 2)(x1)
-
     x2 = REBNCONV(x, mid_ch, 1)
     x = MaxPool2D(2, 2)(x2)
-
     x3 = REBNCONV(x, mid_ch, 1)
     x = MaxPool2D(2, 2)(x3)
-
     x4 = REBNCONV(x, mid_ch, 1)
     x = MaxPool2D(2, 2)(x4)
-
     x5 = REBNCONV(x, mid_ch, 1)
     x = MaxPool2D(2, 2)(x5)
-
     x6 = REBNCONV(x, mid_ch, 1)
-
     x = REBNCONV(x6, mid_ch, 2)
-
     x = REBNCONV(tf.concat([x,x6],axis=-1), mid_ch, 1)
     x = _upsample_like(x,x5)
-
     x = REBNCONV(tf.concat([x,x5],axis=-1), mid_ch, 1)
     x = _upsample_like(x,x4)
-
     x = REBNCONV(tf.concat([x,x4],axis=-1), mid_ch, 1)
     x = _upsample_like(x,x3)
-
     x = REBNCONV(tf.concat([x,x3],axis=-1), mid_ch, 1)
     x = _upsample_like(x,x2)
-
     x = REBNCONV(tf.concat([x,x2],axis=-1), mid_ch, 1)
     x = _upsample_like(x,x1)
-
     x = REBNCONV(tf.concat([x,x1],axis=-1), out_ch, 1)
-
     return x + x0
 
 def RSU6(x, mid_ch=12, out_ch=3):
-    
     x0 = REBNCONV(x, out_ch, 1)
-    
     x1 = REBNCONV(x0, mid_ch, 1)
     x = MaxPool2D(2, 2)(x1)
-
     x2 = REBNCONV(x, mid_ch, 1)
     x = MaxPool2D(2, 2)(x2)
-
     x3 = REBNCONV(x, mid_ch, 1)
     x = MaxPool2D(2, 2)(x3)
-
     x4 = REBNCONV(x, mid_ch, 1)
     x = MaxPool2D(2, 2)(x4)
-
     x5 = REBNCONV(x, mid_ch, 1)
-
     x = REBNCONV(x, mid_ch, 2)
-
     x = REBNCONV(tf.concat([x,x5],axis=-1), mid_ch, 1)
     x = _upsample_like(x,x4)
-
     x = REBNCONV(tf.concat([x,x4],axis=-1), mid_ch, 1)
     x = _upsample_like(x,x3)
-
     x = REBNCONV(tf.concat([x,x3],axis=-1), mid_ch, 1)
     x = _upsample_like(x,x2)
-
     x = REBNCONV(tf.concat([x,x2],axis=-1), mid_ch, 1)
     x = _upsample_like(x,x1)
-
     x = REBNCONV(tf.concat([x,x1],axis=-1), out_ch, 1)
-
     return x + x0
 
-def RSU5(x, mid_ch=12, out_ch=3):
-    
+def RSU5(x, mid_ch=12, out_ch=3): 
     x0 = REBNCONV(x, out_ch, 1)
-    
     x1 = REBNCONV(x0, mid_ch, 1)
     x = MaxPool2D(2, 2)(x1)
 
