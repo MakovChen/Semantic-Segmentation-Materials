@@ -13,3 +13,7 @@
 但是在後段上採樣之前由於已經經過前段的下採樣，因此勢必會損失一些空間資訊。因此，Unet便在上採樣的過程中參考下採樣之前的資訊，從而保留更多有關輸入樣本的空間資訊。相較於FCN，Unet更有利於分割具有不規則形狀和小細節的圖像，經常被用於解決生物方面的醫學挑戰，而FCN則是具有更高的彈性進行各式各樣的應用。為了能夠更方便的取用，兩者的程式碼皆在[FCN.py](#code)與[U-Net.py](#code)中保存，並以Oxford-IIIT pet dataset作為個案演示。
 
 ![](https://i.imgur.com/IzZWZi0.png)
+
+U2Net為U-Net的改進版本，
+![image](https://user-images.githubusercontent.com/98240703/229375336-56361afa-991f-4e55-9ed1-d8bb5ec0ecb8.png)
+
