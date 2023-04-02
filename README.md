@@ -14,7 +14,7 @@
 
 ![](https://i.imgur.com/IzZWZi0.png)
 
-U2Net為U-Net的改進版本，透過ResNet架構使其更能有效將不同級別的特徵進行彙整(U-Net只能彙整同一級別)。
+[U2-Net.py](#code)中的U2Net為U-Net的改進版本，透過ResNet架構使其更能有效將不同級別的特徵進行彙整(U-Net只能彙整同一級別)。
 
 ![image](https://user-images.githubusercontent.com/98240703/229375336-56361afa-991f-4e55-9ed1-d8bb5ec0ecb8.png)
 
