@@ -86,7 +86,7 @@ def upsample_block(x, conv_features, n_filters):
    x = double_conv_block(x, n_filters)
    return x
 
-def build_unet_model():
+def Unet():
    inputs = layers.Input(shape=(128,128,3))
 
    f1, p1 = downsample_block(inputs, 64)
@@ -104,7 +104,7 @@ def build_unet_model():
    unet_model = tf.keras.Model(inputs, outputs, name="U-Net")
    return unet_model
   
-unet_model = build_unet_model()
+unet_model = Unet()
 unet_model.compile(optimizer=tf.keras.optimizers.Adam(), loss="sparse_categorical_crossentropy", metrics="accuracy")
 model_history = unet_model.fit(train_batches, epochs=20, steps_per_epoch=TRAIN_LENGTH // BATCH_SIZE, validation_steps=TEST_LENTH // BATCH_SIZE // 5, validation_data=test_batches)
 
