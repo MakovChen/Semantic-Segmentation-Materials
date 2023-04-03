@@ -25,9 +25,6 @@
 ### U-Net
 但是在FCN後段解碼的過程中，由於已經經過前段的下採樣，因此勢必會損失一些空間資訊。因此，Unet便在上採樣的過程中參考在下採樣之前的資訊，從而保留更多有關輸入樣本的特徵資訊。相較於FCN，Unet更有利於分割具有不規則形狀和小細節的圖像，經常被用於解決生物方面的醫學挑戰，而FCN則是具有更高的彈性進行各式各樣的應用。
 
-Dice損失函, focal損失函,
-Hausdorff°和 boundary損失函
-
 <img src="https://i.imgur.com/IzZWZi0.png" width = "700"/>
 
 ### U2-Net
@@ -42,3 +39,28 @@ U2-Net是一項較為新型的Unet，透過搭配多個Unet將不同量級的特
 | :---:           | :---:            | :---:            | :---:            | 
 | 檔名/版本         |  Oxford-IIIT pet dataset     |  Oxford-IIIT pet dataset    | Oxford-IIIT pet dataset    | 
 | 檔名/版本         |  [FCN-keras.py]()     |  [Unet-keras.py]()    |- [U2Net-keras.py]()         | 
+
+### 備註欄
+#build the FCN model
+def dice_loss(y_true, y_pred):
+    y_true = tf.cast(tf.one_hot(indices=y_true, depth=num_classes), tf.float32)
+    numerator = 2 * tf.reduce_sum(y_true * y_pred)
+    denominator = tf.reduce_sum(y_true + y_pred)
+    return 1 - numerator / denominator
+
+def IoU(y_true, y_pred, num_classes=3, smooth=1):
+    y_true = tf.cast(tf.one_hot(indices=y_true, depth=num_classes), tf.float32)
+    iou_scores = []
+    for c in range(num_classes):
+        true_class = y_true[..., c]
+        pred_class = y_pred[..., c]
+        intersection = tf.reduce_sum(tf.cast(true_class * pred_class, tf.float32))
+        union = tf.reduce_sum(tf.cast(tf.math.logical_or(true_class, pred_class), tf.float32))
+        iou = (intersection + smooth) / (union + smooth)
+        iou_scores.append(iou)
+    return tf.reduce_mean(iou_scores)
+    
+ 
+Dice損失函, focal損失函,
+Hausdorff°和 boundary損失函
+
