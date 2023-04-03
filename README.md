@@ -29,7 +29,7 @@
 <img src="https://i.imgur.com/IzZWZi0.png" width = "700"/>
 
 ### U2-Net
-U2-Net是一項較為新型的Unet，透過搭配多個Unet將不同量級的特徵進行彙整，並結合了自注意力機制，使其能夠選擇性地突出顯示重要的特徵與區域，實現更佳的分割精度與通用性，參數量與運算資源便是它主要的限制。
+U2-Net是一項較為新型的Unet，透過搭配多個Unet將不同量級的特徵進行彙整，並結合了自注意力機制，使其能夠選擇性地突出顯示重要的特徵與區域，實現更佳的分割精度與通用性，而參數量與運算資源便是它目前主要的限制。
 
 <img src="https://user-images.githubusercontent.com/98240703/229375336-56361afa-991f-4e55-9ed1-d8bb5ec0ecb8.png" width = "500"/>
 
