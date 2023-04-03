@@ -40,8 +40,16 @@ U2-Net是一項較為新型的Unet，透過搭配多個Unet將不同量級的特
 | 檔名/版本         |  Oxford-IIIT pet dataset     |  Oxford-IIIT pet dataset    | Oxford-IIIT pet dataset    | 
 | 檔名/版本         |  [FCN-keras.py]()     |  [Unet-keras.py]()    |- [U2Net-keras.py]()         | 
 
+* FCN-keras.py
+
+由於語意分割本來就是相對比較困難的任務，因此，直接利用keras硬train整個FCN將會非常困難，很容易overfitting或underfitting(視問題而定)。而較為穩健的做法便是將前段的編碼器與後段的解碼器分開來訓練，在這份檔案中，是先使用了Tensorflow的預訓練模型VGG-16作為下採樣的工具，而後段則是沿用FCN的上採樣層，使模型能夠更有效的收斂。下圖為整個網路的架構。
+
+<img src="https://user-images.githubusercontent.com/98240703/229553873-c7646ea4-dcb2-4b8d-96a9-a6d297bfed51.png" width = "700"/>
+
+* Unet-keras.py
+
+
 ### 備註欄
-#build the FCN model
 def dice_loss(y_true, y_pred):
     y_true = tf.cast(tf.one_hot(indices=y_true, depth=num_classes), tf.float32)
     numerator = 2 * tf.reduce_sum(y_true * y_pred)
@@ -63,4 +71,3 @@ def IoU(y_true, y_pred, num_classes=3, smooth=1):
  
 Dice損失函, focal損失函,
 Hausdorff°和 boundary損失函
-
