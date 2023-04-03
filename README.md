@@ -42,7 +42,7 @@ U2-Net是一項較為新型的Unet，透過搭配多個Unet將不同量級的特
 
 * FCN-keras.py
 
-由於語意分割本來就是相對比較困難的任務，因此，直接利用keras硬train整個FCN將會非常困難，很容易overfitting或underfitting(視問題而定)。而較為穩健的做法便是將前段的編碼器與後段的解碼器分開來訓練，在這份檔案中，是先使用了Tensorflow的預訓練模型VGG-16作為下採樣的工具，而後段則是沿用FCN的上採樣層，使模型能夠更有效的收斂。下圖為整個網路的架構。
+由於語意分割本來就是相對比較困難的任務，因此，直接利用keras硬train整個FCN將會非常困難，很容易overfitting或underfitting(視問題而定)。而較為穩健的做法便是將前段的編碼器與後段的解碼器分開來訓練，在這份檔案中則是先使用Tensorflow的預訓練模型VGG-16作為下採樣的工具，而後段則是沿用FCN的上採樣層，使模型能夠更有效的收斂。下圖為整個網路的架構。
 
 <img src="https://user-images.githubusercontent.com/98240703/229553873-c7646ea4-dcb2-4b8d-96a9-a6d297bfed51.png" width = "700"/>
 
