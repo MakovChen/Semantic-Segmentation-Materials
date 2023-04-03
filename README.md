@@ -37,8 +37,8 @@ U2-Net是一項較為新型的Unet，透過搭配多個Unet將不同量級的特
 
 |        模型     | `FCN`          |`UNet`            |`U2Net`                |
 | :---:           | :---:            | :---:            | :---:            | 
-| 檔名/版本         |  Oxford-IIIT pet dataset     |  Oxford-IIIT pet dataset    | Oxford-IIIT pet dataset    | 
-| 檔名/版本         |  [FCN-keras.py]()     |  [Unet-keras.py]()    |- [U2Net-keras.py]()         | 
+| 檔名/版本         |  Oxford-IIIT pet dataset     |  Oxford-IIIT pet dataset    | -    | 
+| 檔名/版本         |  [FCN-keras.py]()     |  [Unet-keras.py]()    |- [U2Net.py]()         | 
 
 * FCN-keras.py
 
