@@ -20,17 +20,17 @@
 ### FCN
 沿襲過去在**圖像分類**的成功案例，我們可以透過改變卷積操作的連結方式來取用這些特徵與資訊。FCN就是一個非常經典的例子，過去CNN的架構主要是在前段布置卷積層以擷取圖像特徵 **(編碼)**，後段則是透過全連結層(full connetion layer, FC-layer)將這些特徵進行分類 **(解碼)**。然而，FC-layer在數萬個像素預測值面前顯得，一個卷積操作就能抵上幾千個神經元的工作，也更能有效地處理非線性問題，因此FCN的概念便是將後段的FC-layer替換成Conv-layer，如下圖的連結方式。
 
- <img src="https://i.imgur.com/X82zO1O.png" width = "600"/>
+ <img src="https://i.imgur.com/X82zO1O.png" width = "400"/>
 
 ### U-Net
 但是在FCN後段解碼的過程中，由於已經經過前段的下採樣，因此勢必會損失一些空間資訊。因此，Unet便在上採樣的過程中參考在下採樣之前的資訊，從而保留更多有關輸入樣本的特徵資訊。相較於FCN，Unet更有利於分割具有不規則形狀和小細節的圖像，經常被用於解決生物方面的醫學挑戰，而FCN則是具有更高的彈性進行各式各樣的應用。
 
-<img src="https://i.imgur.com/IzZWZi0.png" width = "700"/>
+<img src="https://i.imgur.com/IzZWZi0.png" width = "500"/>
 
 ### U2-Net
 U2-Net是一項較為新型的Unet，透過搭配多個Unet將不同量級的特徵進行彙整，並結合了自注意力機制，使其能夠選擇性地突出顯示重要的特徵與區域，實現更佳的分割精度與通用性，而參數量與運算資源便是它目前主要的限制。
 
-<img src="https://user-images.githubusercontent.com/98240703/229375336-56361afa-991f-4e55-9ed1-d8bb5ec0ecb8.png" width = "500"/>
+<img src="https://user-images.githubusercontent.com/98240703/229375336-56361afa-991f-4e55-9ed1-d8bb5ec0ecb8.png" width = "450"/>
 
 
 ## 程式碼資源
