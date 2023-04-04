@@ -5,8 +5,8 @@
 ## 目錄
 
 - [背景](#background)
-- [相關技術說明](#install)
-- [程式碼資源](#install)
+- [相關的研究進展](#install)
+- [程式碼與內容說明](#install)
 
 
 ## 背景
