@@ -47,4 +47,4 @@ U2-Net是一項較為新型的Unet，透過搭配多個Unet將不同量級的特
 <img src="https://user-images.githubusercontent.com/98240703/229553873-c7646ea4-dcb2-4b8d-96a9-a6d297bfed51.png" width = "700"/>
 
 * Unet-keras.py
-Unet相較於FCN無須依靠預訓練的特徵編碼器就能夠很好地分割影像，因此在語意分割上能夠更方便地使用，收斂效率也更高。但是FCN的好處也是在於其容許比較多的變化。
+在演示的結果中可以發現其在沒有遷移預訓練模型的情況下就能很好地擷取特徵並分跟影像，相較於FCN具有更好的收斂效率與穩健性。
