@@ -6,9 +6,9 @@
 
 - [背景](#background)
 - [相關的研究進展](#install)
- - FCN
- - U-Net
- - U2-Net
+  - FCN
+  - U-Net
+  - U2-Net
 - [程式碼與內容說明](#install)
 
 
